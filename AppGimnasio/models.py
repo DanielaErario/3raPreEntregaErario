@@ -16,3 +16,4 @@ class Sucursal(models.Model):
     ciudad = models.CharField(max_length=40)
     calle = models.CharField(max_length=20)
     numero = models.IntegerField()
+
