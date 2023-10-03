@@ -4,7 +4,7 @@ from .models import Alumno,Clase,Sucursal
 # Create your views here.
 
 def inicio(request):
-    return HttpResponse("Hola culo roto")
+    return render(request, "AppGimnasio/index.html")
 
 def alumnos(request):
     return render(request, "AppGimnasio/alumnos.html")
