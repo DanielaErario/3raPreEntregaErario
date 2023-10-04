@@ -1,0 +1,17 @@
+{% extends "AppGimnasio/padre.html" %}
+{% load static %}
+{% block Cambia %}
+
+<h> Busqueda solicitada: {{apellido}}  </h>
+
+{% if alumnos %}
+
+<ul>
+{% for alumno in alumnos %}
+      <li> {{alumno.nombre}}</li>
+      <li> {{alumno.apellido}}</li>
+{% endfor %}      
+</ul>
+
+{% endif %}
+{% endblock %}

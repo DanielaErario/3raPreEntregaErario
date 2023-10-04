@@ -8,9 +8,9 @@ class Alumno(models.Model):
     email = models.EmailField()
 
 class Clase(models.Model):
-    clase = models.CharField(max_length=40)
+    tipo = models.CharField(max_length=40)
     dia = models.DateField()
-    duracion = models.DurationField()
+    tiempo = models.IntegerField()
     
 class Sucursal(models.Model):
     ciudad = models.CharField(max_length=40)

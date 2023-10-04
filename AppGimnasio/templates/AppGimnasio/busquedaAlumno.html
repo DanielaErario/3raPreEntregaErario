@@ -1,0 +1,11 @@
+{% extends "AppGimnasio/padre.html" %}
+{% load static %}
+{% block Cambia %}
+
+<form action="/AppGimnasio/buscar/" method="GET">
+    <input type = "text" name = "apellido" id = "apellido">
+    <input type = "submit" value = "Buscar">
+
+</form>
+
+{% endblock %}

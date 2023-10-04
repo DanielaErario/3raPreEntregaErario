@@ -25,8 +25,8 @@ def alumnosFormulario(request):
  
             if miFormulario.is_valid:
                   informacion = miFormulario.cleaned_data
-                  curso = Alumno(nombre=informacion["nombre"], apellido=informacion["apellido"],edad=informacion["edad"],email=informacion["email"])
-                  curso.save()
+                  datos = Alumno(nombre=informacion["nombre"], apellido=informacion["apellido"],edad=informacion["edad"],email=informacion["email"])
+                  datos.save()
                   return render(request, "AppGimnasio/index.html")
       else:
             miFormulario = AlumnosFormulario()
@@ -37,18 +37,18 @@ def clasesFormulario(request):
  
       if request.method == "POST":
  
-            miFormulario = ClasesFormulario(request.POST) # Aqui me llega la informacion del html
-            print(miFormulario)
+            FormularioDos = ClasesFormulario(request.POST) # Aqui me llega la informacion del html
+            print(FormularioDos)
  
-            if miFormulario.is_valid:
-                  informacion = miFormulario.cleaned_data
-                  clase = Clase(clase=informacion["clase"], dia=informacion["dia"],duracion=informacion["duracion"])
+            if FormularioDos.is_valid:
+                  informacion = FormularioDos.cleaned_data
+                  clase = Clase(tipo=informacion["tipo"], dia=informacion["dia"],tiempo=informacion["tiempo"])
                   clase.save()
                   return render(request, "AppGimnasio/index.html")
       else:
-            miFormulario = ClasesFormulario()
+            FormularioDos = ClasesFormulario()
  
-      return render(request, "AppGimnasio/clasesFormulario.html", {"miFormulario": miFormulario})
+      return render(request, "AppGimnasio/clasesFormulario.html", {"FormularioDos": FormularioDos})
 
 def sucursalesFormulario(request):
  
@@ -67,3 +67,16 @@ def sucursalesFormulario(request):
  
       return render(request, "AppGimnasio/sucursalesFormulario.html", {"miFormulario": miFormulario})
 
+def busquedaAlumno(request):
+      return render(request, "AppGimnasio/busquedaAlumno.html")
+
+def buscar(request):
+      if request.GET['apellido'] or request.GET['nombre']:
+            nombre = request.GET['nombre']
+            apellido = request.GET['apellido']
+            email = Alumno.objects.filter(nombre__icontains=apellido)
+            return render(request, "AppGimnasio/resultadosBusqueda.html", {"nombre":nombre, "apellido":apellido})
+      else:
+            respuesta = "No enviaste datos"
+
+      return HttpResponse(respuesta)
