@@ -8,10 +8,15 @@
 
 <ul>
 {% for alumno in alumnos %}
-      <li> {{alumno.nombre}}</li>
-      <li> {{alumno.apellido}}</li>
+      <li> Nombre : {{alumno.nombre}}</li>
+      <li> Apellido : {{alumno.apellido}}</li>
+      <li> Edad : {{alumno.edad}}</li>
+      <li> Email : {{alumno.email}}</li>
 {% endfor %}      
 </ul>
 
+{% else %}
+<p> No hay datos, por favor busque por apellido.</p>
 {% endif %}
+
 {% endblock %}

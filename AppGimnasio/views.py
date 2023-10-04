@@ -8,13 +8,16 @@ def inicio(request):
     return render(request, "AppGimnasio/index.html")
 
 def alumnos(request):
-    return render(request, "AppGimnasio/alumnos.html")
+    alumnos = Alumno.objects.all()
+    return render(request, "AppGimnasio/alumnos.html",{"alumnos":alumnos})
 
 def clases(request):
-    return render(request, "AppGimnasio/clases.html")
+    clases = Clase.objects.all()
+    return render(request, "AppGimnasio/clases.html",{"clases":clases})
 
 def sucursales(request):
-    return render(request, "AppGimnasio/sucursales.html")
+    sucursales = Sucursal.objects.all()
+    return render(request, "AppGimnasio/sucursales.html",{"sucursales":sucursales})
 
 def alumnosFormulario(request):
  
@@ -42,8 +45,8 @@ def clasesFormulario(request):
  
             if FormularioDos.is_valid:
                   informacion = FormularioDos.cleaned_data
-                  clase = Clase(tipo=informacion["tipo"], dia=informacion["dia"],tiempo=informacion["tiempo"])
-                  clase.save()
+                  datos = Clase(clase=informacion["clase"], dia=informacion["dia"],tiempo=informacion["tiempo"])
+                  datos.save()
                   return render(request, "AppGimnasio/index.html")
       else:
             FormularioDos = ClasesFormulario()
@@ -71,12 +74,13 @@ def busquedaAlumno(request):
       return render(request, "AppGimnasio/busquedaAlumno.html")
 
 def buscar(request):
-      if request.GET['apellido'] or request.GET['nombre']:
-            nombre = request.GET['nombre']
-            apellido = request.GET['apellido']
-            email = Alumno.objects.filter(nombre__icontains=apellido)
-            return render(request, "AppGimnasio/resultadosBusqueda.html", {"nombre":nombre, "apellido":apellido})
+      if request.GET["apellido"]:
+            apellido = request.GET["apellido"]
+            alumnos = Alumno.objects.filter(apellido__icontains=apellido)
+            return render(request, "AppGimnasio/resultadosBusqueda.html", {"alumnos":alumnos, "apellido":apellido})
       else:
             respuesta = "No enviaste datos"
 
       return HttpResponse(respuesta)
+      
+      

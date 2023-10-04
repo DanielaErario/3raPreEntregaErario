@@ -8,7 +8,7 @@ class Alumno(models.Model):
     email = models.EmailField()
 
 class Clase(models.Model):
-    tipo = models.CharField(max_length=40)
+    clase = models.CharField(max_length=40)
     dia = models.DateField()
     tiempo = models.IntegerField()
     

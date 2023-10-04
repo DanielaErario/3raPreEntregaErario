@@ -2,7 +2,13 @@
 {% load static %}
 {% block Cambia %}
 
-<h> Clases del mes:  </h>
 
+<h> Clases programadas:  </h>
+{% for clase in clases %}
+      <li> Clase: {{clase.clase}}</li>
+      <li> Dia: {{clase.dia}}</li>
+      <li> Duracion: {{clase.tiempo}}</li>
+      <br>
+{% endfor %}     
 
 {% endblock %}

@@ -2,6 +2,14 @@
 {% load static %}
 {% block Cambia %}
 
-<h> Alumnos Inscriptos: </h>
+
+<h> Alumnos inscriptos:  </h>
+{% for alumno in alumnos %}
+      <li> Nombre: {{alumno.nombre}}</li>
+      <li> Apellido: {{alumno.apellido}}</li>
+      <li> Edad: {{alumno.edad}}</li>
+      <li> Email: {{alumno.email}}</li>
+      <br>
+{% endfor %}     
 
 {% endblock %}

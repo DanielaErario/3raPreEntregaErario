@@ -2,7 +2,13 @@
 {% load static %}
 {% block Cambia %}
 
-<h> Sucursales: </h>
 
+<h> Sucursales:  </h>
+{% for sucursal in sucursales %}
+      <li> Ciudad: {{sucursal.ciudad}}</li>
+      <li> Calle: {{sucursal.calle}}</li>
+      <li> Numero: {{sucursal.numero}}</li>
+      <br>
+{% endfor %}     
 
 {% endblock %}

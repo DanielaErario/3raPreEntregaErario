@@ -8,7 +8,7 @@ class AlumnosFormulario(forms.Form):
     email = forms.EmailField()
 
 class ClasesFormulario(forms.Form):
-    tipo = forms.CharField(max_length=40)
+    clase = forms.CharField(max_length=40)
     dia = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control','type' : 'date'}))
     tiempo = forms.IntegerField()
 
