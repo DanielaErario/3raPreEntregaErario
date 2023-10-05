@@ -14,5 +14,5 @@ class ClasesFormulario(forms.Form):
 
 class SucursalesFormulario(forms.Form):
     ciudad = forms.CharField(max_length=40)
-    direccion = forms.CharField(max_length=40)
-    calle = forms.IntegerField()
+    calle = forms.CharField(max_length=20)
+    numero = forms.IntegerField()

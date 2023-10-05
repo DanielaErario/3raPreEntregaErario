@@ -57,18 +57,18 @@ def sucursalesFormulario(request):
  
       if request.method == "POST":
  
-            miFormulario = SucursalesFormulario(request.POST) # Aqui me llega la informacion del html
-            print(miFormulario)
+            formularioSuc = SucursalesFormulario(request.POST) # Aqui me llega la informacion del html
+            print(formularioSuc)
  
-            if miFormulario.is_valid:
-                  informacion = miFormulario.cleaned_data
-                  sucursal = Sucursal(ciudad=informacion["ciudad"], direccion=informacion["direccion"],calle=informacion["calle"])
+            if formularioSuc.is_valid:
+                  informacion = formularioSuc.cleaned_data
+                  sucursal = Sucursal(ciudad=informacion["ciudad"], calle=informacion["calle"],numero=informacion["numero"])
                   sucursal.save()
                   return render(request, "AppGimnasio/index.html")
       else:
-            miFormulario = ClasesFormulario()
+            formularioSuc = SucursalesFormulario()
  
-      return render(request, "AppGimnasio/sucursalesFormulario.html", {"miFormulario": miFormulario})
+      return render(request, "AppGimnasio/sucursalesFormulario.html", {"formularioSuc": formularioSuc})
 
 def busquedaAlumno(request):
       return render(request, "AppGimnasio/busquedaAlumno.html")

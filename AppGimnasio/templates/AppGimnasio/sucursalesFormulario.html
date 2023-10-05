@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario - Agregar Sucursales </title>
-</head>
-<body>
+{% extends "AppGimnasio/padre.html" %}
+{% load static %}
+{% block Cambia %}
 
-    {% if miFormulario.errores %}
+{% if formularioSuc.errores %}
 
     <p style="color: red;"> Por favor, ingrese los datos de manera correcta.</p>
     
     {% endif %}
     <form action="" method="POST">{% csrf_token %}
         <table> 
-            {{ miFormulario.as_table }}
+            {{ formularioSuc.as_table }}
         </table>
         
         <input type="submit" value="Enviar">
 
     </form>
 
-    
-</body>
-</html>
+
+   
+
+{% endblock %}
